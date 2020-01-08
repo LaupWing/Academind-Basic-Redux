@@ -6,9 +6,14 @@ export const saveResult = (result)=>{
         result
     }
 }
+
+
+// With thunk it is possible to get the state prior updating it
 export const storeResult = (result)=>{
-    return (dispatch)=>{
+    return (dispatch,getState)=>{
         setTimeout(()=>{
+            const oldCounter = getState().ctr.counter
+            console.log(oldCounter)
             dispatch(saveResult(result))
         },2000)
     }
